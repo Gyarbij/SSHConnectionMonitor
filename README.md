@@ -13,7 +13,7 @@ This script checks the auth.log and secure log files for SSH connections and pri
 ## Installation
 
 1. Open a terminal.
-2. Clone this repository to your local machine using the following command: 'git clone https://github.com/Gyarbij/SSHConnectionMonitor.git'
+2. Clone this repository to your local machine using the following command: ''git clone https://github.com/Gyarbij/SSHConnectionMonitor.git''
 3. Navigate to the cloned repository: 'cd SSHConnectionMonitor'
 
 ## Usage
