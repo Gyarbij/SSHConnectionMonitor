@@ -13,12 +13,12 @@ This script checks the auth.log and secure log files for SSH connections and pri
 ## Installation
 
 1. Open a terminal.
-2. Clone this repository to your local machine using the following command: ''git clone https://github.com/Gyarbij/SSHConnectionMonitor.git''
-3. Navigate to the cloned repository: 'cd SSHConnectionMonitor'
+2. Clone this repository to your local machine using the following command: ```git clone https://github.com/Gyarbij/SSHConnectionMonitor.git```
+3. Navigate to the cloned repository: ```cd SSHConnectionMonitor```
 
 ## Usage
 
-1. Run the script with Python 3: 'sudo python3 sshcm.py &' The `&` at the end of the command will run the script in the background, allowing you to continue using the terminal for other tasks.
+1. Run the script with Python 3: ```sudo python3 sshcm.py &``` The `&` at the end of the command will run the script in the background, allowing you to continue using the terminal for other tasks.
 
 2. To check if the script is running, you can use the `jobs` command. You should see the `sshcm.py` script listed.
 
