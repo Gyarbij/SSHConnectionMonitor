@@ -8,11 +8,12 @@ import subprocess
 import sys
 import time
 
+monitor_sources = ["files", "journald"]
 try:
     from systemd import journal
 except ImportError:
-    print("No journal monitoring available. Install python-systemd", file=sys.stderr)
-
+    print("No journal monitoring available. Install python-systemd to add journal monitoring capabilities", file=sys.stderr)
+    monitor_sources.remove("journald")
 
 parser = argparse.ArgumentParser(description='Alert when someone logs in via SSH')
 
@@ -25,7 +26,8 @@ parser.add_argument(
 
 parser.add_argument(
     "--monitor",
-    choices=["files", "journald"],
+    choices=monitor_sources,
+    default="files",
     help="Select which source to monitor for ssh logins",
 )
 
@@ -125,18 +127,18 @@ def check_ssh_connections(last_line):
 
 def main():
 
-    match args.monitor:
-        case "files":
-            last_line = None
+    if args.monitor == "files":
+        last_line = None
 
-            while True:
-                last_line = check_ssh_connections(last_line)
-                time.sleep(10)  # Check every 10 seconds
-        case "journald":
-            monitor_journal()
-        case _:
-            log.error("Monitoring argument must be provided")
-            exit(-1)
+        while True:
+            last_line = check_ssh_connections(last_line)
+            time.sleep(10)  # Check every 10 seconds
+    elif args.monitor == "journald":
+        monitor_journal()
+
+    else:
+        log.error("Monitoring argument must be provided")
+        exit(-1)
 
 
 if __name__ == "__main__":
